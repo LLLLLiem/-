@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML代码转换器3.0版</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #6a1b9a;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        textarea {
+            width: 80%;
+            height: 150px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="text"] {
+            width: 40%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6a1b9a;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #9c4dcc;
+        }
+
+        .quote {
+            margin-top: 30px;
+            font-style: italic;
+            color: #555;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>伟大的C崽送你的第三个HTML转换器😎</h1>
+
+    <label for="filename">输入一个巨炸的文件名 (不带后缀):</label>
+    <input type="text" id="filename" placeholder="输入一个好名">
+
+    <h3>输入HTML代码:</h3>
+    <textarea id="htmlCode" placeholder="（你事真多，非要整好看点，简约点不是看起来更正式吗???）
+在此输入HTML代码..."></textarea>
+
+    <br><br>
+
+    <button onclick="downloadFile()">点击这里我会把文件吐给你😛</button>
+
+    <div id="quote" class="quote"></div>
+
+    <script>
+        function downloadFile() {
+            var htmlContent = document.getElementById('htmlCode').value;
+            var filename = document.getElementById('filename').value || '为啥不起名';  // 默认文件名
+
+            // 如果没有输入文件名，使用“为啥不起名”作为文件名
+            var blob = new Blob([htmlContent], { type: 'text/html' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename + '.html'; // 将文件名加上.html后缀
+
+            link.click();  // 触发下载
+        }
+
+        function randomQuote() {
+            var quotes = [
+                "“人生就像一盒巧克力，你永远不知道下一颗是什么味道。”",
+                "“这是一条非常炫酷的话”",
+                "“未来并非某个时间点，而是我们自己创造的每一天。”",
+                "“你不必去迎合他人的期待，做自己就好。”",
+                "“世界这么大，生活这么短，我们不妨追随自己的心。”"
+            ];
+
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').innerText = quotes[randomIndex];
+        }
+
+        randomQuote();  // 页面加载时显示一条随机语录
+    </script>
+
+</body>
+</html>
